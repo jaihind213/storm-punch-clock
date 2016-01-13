@@ -6,6 +6,7 @@ Punch-Clock
 You have a card per person.
 
 The person punches IN with the card when he/she enters the office.
+
 The person punches OUT with the card when he/she leaves the office.
 
 The punch clock records the time of entry/exit on the card
@@ -56,8 +57,7 @@ One Punch Clock per JVM. All punch cards which are currently punched in are expo
 
 We have multiple JVM ,=> we have multiple Punch Clocks.
 
-Batches move across storm workers & we have multiple JVM, 
-so we need to aggregate the data across Punch Clocks.
+Batches move across storm workers & we have multiple JVM, so we need to aggregate the data across Punch Clocks.
 
 We have a aggregator server, we which queries all the jvms using jmx to get the current punch cards and exposed this data via REST.
 
@@ -81,18 +81,24 @@ In the emitBatch method:
 Batch Transactional Bolt:
 ========================
 Prepare method of Transactional Bolt:
+```
        punchCardId ="Bolt__"+Thread.currentThread().getId()+"__"+System.currentTimeMillis();  //Create Punch Card for txn 
-
+```
 Execute method of Transactional Bolt:
+```
        PunchClock.getInstance().punchIn(punchCardId);      // Punch In
-
+```
 In the finishBatch method of Transactional Bolt:
+```
        PunchClock.getInstance().punchOut(punchCardId);  // Punch Out
+```
 
 Sample Output of GET /PunchCards from the aggregator Server:
 ------------------------------------------------------------
+
 Here we have the cards from host 10.0.0.66 and we have a failed host 10.0.0.68 where we could not get cards from.
 
+```json
 {
   "hostSummaryList": [
     {
@@ -110,7 +116,7 @@ Here we have the cards from host 10.0.0.66 and we have a failed host 10.0.0.68 w
     "service:jmx:rmi:///jndi\/rmi://10.0.0.68:9011/jmxrmi"
   ]
 }
-
+```
 Demo:
 -----
 Refer to storm-samples/Readme & aggregator-server/Readme on how to access the api(s) and a demo.
