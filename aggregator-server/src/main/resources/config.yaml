@@ -1,0 +1,2 @@
+punchClockJmxUrls:
+    - service:jmx:rmi:///jndi/rmi://localhost:9010/jmxrmi

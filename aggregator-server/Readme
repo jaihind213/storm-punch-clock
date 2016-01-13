@@ -1,0 +1,35 @@
+A server to aggregate punch cards spread across punch clocks in multiple jvm's.
+
+In the case of apache-storm, we can have Punch clocks in multiple worker jvm's
+
+This server aggregates and exposes REST api's like
+getPunchCards , deactivatePunchClock , activatePunchClock , clearAllPunchClock
+
+how to compile/start the server:
+
+mvn clean compile package; # at the top level.
+cd aggregator-server/target
+
+java -jar aggregator-server.jar <path_to_config.yaml>
+
+sample config yaml: (which has list of server to aggregate from)
+
+punchClockJmxUrls:
+    - service:jmx:rmi:///jndi/rmi://10.0.0.66:9010/jmxrmi
+    - service:jmx:rmi:///jndi/rmi://10.0.0.68:9011/jmxrmi
+
+then go to the browser:
+http://localhost:4567/PunchCards
+
+other rest api(s)
+POST /clear 
+
+POST /deactivate
+
+POST /activate
+
+For the Demo: run the sample storm topology in storm samples
+
+
+
+

@@ -1,0 +1,10 @@
+Sample code to run a transactional storm topology:
+
+To compile:
+mvn clean compile package ; #at the top level
+
+To run a sample transactional topology:
+cd storm-samples/target;
+
+#jmx options are neccessary
+java -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9010 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -jar storm-sample-txn-topology.jar
