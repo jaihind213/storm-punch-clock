@@ -22,11 +22,11 @@ then go to the browser:
 http://localhost:4567/PunchCards
 
 other rest api(s)
-POST /clear 
+POST /clear       (clear entries in the storm punch clock on all jvm)
 
-POST /deactivate
+POST /deactivate  (deactivate the storm punch clock on all jvm)
 
-POST /activate
+POST /activate    (activate the storm punch clock on all jvm)
 
 For the Demo: run the sample storm topology in storm samples
 
