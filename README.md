@@ -115,3 +115,5 @@ Here we have the cards from host 10.0.0.66 and we have a failed host 10.0.0.68 w
 Demo:
 -----
 Refer to storm-samples/Readme & aggregator-server/Readme on how to access the api(s) and a demo.
+
+PS: if there are no punch cards available anywhere and topology is stuck, then the problem is probably not your bolts/spout.
