@@ -66,10 +66,7 @@ Refer to storm-samples/Readme & aggregator-server/Readme on how to access the ap
 How does the code look like?
 ----------------------------
 
-Partitioned Transactional Spout:
-==========================
-
-In the emitBatch method:
+In the emitBatch method of Partitioned Transactional Spout:
 
      PunchClock.getInstance().punchIn(punchCardId);  // Punch In 
 
@@ -78,8 +75,6 @@ In the emitBatch method:
      PunchClock.getInstance().punchOut(punchCardId);  // Punch Out
 
 
-Batch Transactional Bolt:
-========================
 Prepare method of Transactional Bolt:
 ```
        punchCardId ="Bolt__"+Thread.currentThread().getId()+"__"+System.currentTimeMillis();  //Create Punch Card for txn 
