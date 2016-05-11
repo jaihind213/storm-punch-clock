@@ -93,17 +93,13 @@ Underlying implementation of Punch In / Out
 -------------------------------------------
 Punch In:
 ```
-       hashmap.put(puncheeId, card); //using thread id as part of puncheeId , makes sure there are no conflicts
+       map.put(puncheeId, card); //using thread id as part of puncheeId , makes sure there are no conflicts
 ```
 
 Punch Out:
 ```
-       hashmap.remove(puncheeId);
+       map.remove(puncheeId);
 ```
-
-Is is Intrusive ?
-------------------
-Yes, but looking at the above code, its an simple put/remove call on a hashmap.
 
 
 Sample Output of GET /PunchCards from the aggregator Server:
