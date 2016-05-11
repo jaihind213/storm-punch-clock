@@ -63,6 +63,7 @@ We have a aggregator server, we which queries all the jvms using jmx to get the 
 
 Refer to storm-samples/Readme & aggregator-server/Readme on how to access the api(s) and a demo.
 
+
 How does the code look like?
 ----------------------------
 
@@ -87,6 +88,23 @@ In the finishBatch method of Transactional Bolt:
 ```
        PunchClock.getInstance().punchOut(punchCardId);  // Punch Out
 ```
+
+Underlying implementation of Punch In / Out
+-------------------------------------------
+Punch In:
+```
+       hashmap.put(puncheeId, card); //using thread id as part of puncheeId , makes sure there are no conflicts
+```
+
+Punch Out:
+```
+       hashmap.remove(puncheeId);
+```
+
+Is is Intrusive ?
+------------------
+Yes, but looking at the above code, its an simple put/remove call on a hashmap.
+
 
 Sample Output of GET /PunchCards from the aggregator Server:
 ------------------------------------------------------------
