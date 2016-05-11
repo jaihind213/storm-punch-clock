@@ -3,6 +3,7 @@ package org.debug.punchclock;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by vishnuhr on 23/11/15.
@@ -11,7 +12,7 @@ import java.util.*;
 @Slf4j
 public class PunchClock {
 
-    private Map<String,PunchCard> register = new HashMap<String, PunchCard>();
+    private Map<String,PunchCard> register = new ConcurrentHashMap<String, PunchCard>();
 
     private volatile boolean deactivated = true;//off by default. man must activate if he wants to use it. (Done On Purpose!)
 
